@@ -1,0 +1,15 @@
+<html>
+<body>
+<p>This is awkward...</p>
+</body>
+<script>
+    // Redirect to isto.day/#url
+    // Get Day from URL isto.day/tuesday
+    var url = window.location.href;
+    // Split from last /
+    var url_array = url.split("#");
+    // Get last element
+    var day_url = url_array[url_array.length - 1];
+    window.location.replace("https://isto.day/#" + day_url);
+</script>
+</html>

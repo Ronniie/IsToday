@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>IsTo.day</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IsToday">
+    <meta name="twitter:description" content="Welcome to IsToday, is today tuesday?">
+    <meta name="twitter:image" content="assets/images/IsToday.svg">
+    <!-- Site -->
+    <meta property="og:title" content="IsTo.day" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://isto.day/" />
+    <meta property="og:image" content="assets/images/IsToday.svg" />
+    <meta property="og:description" content="Welcome to IsToday, is today tuesday?" />
+    <meta property="og:site_name" content="IsToday" />
+    <!-- Color -->
+    <meta name="theme-color" content="#42e3ff">
+    <meta name="msapplication-navbutton-color" content="#42e3ff">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- Bootstrap Layout -->
+<div class="istoday">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="assets/images/IsToday.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal" id="question">Is today Tuesday?</h1>
+        <p class="lead" id="answer">Yes!</p>
+    </div>
+    <p class="mt-5 mb-3 text-muted text-center" id="copyright"></p>
+</div>
+</body>
+<script>
+
+    // Is Today Setup
+    var today = new Date();
+    var day = today.getDay();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    // Get Day from URL isto.day/tuesday
+    var url = window.location.href;
+    // Split from last /
+    var url_array = url.split("#");
+    // Get last element
+    var day_url = url_array[url_array.length - 1];
+
+    // Is today day_url?
+    if (day_url === "") {
+        // If no day_url, set to today
+        el = "Today is " + days[day] + "!";
+        document.getElementById("question").innerHTML = el;
+        document.getElementById("answer").innerHTML = "";
+    } else{
+        day_url = day_url.toLowerCase().charAt(0).toUpperCase() + day_url.toLowerCase().slice(1);
+        // Does day_url match day
+        if (day_url === days[day]) {
+            // If yes, set to today
+            el = "Yes! Today is " + days[day] + "!";
+        } else {
+            // If no, set to day_url
+            el = "No! " + day_url.charAt(0).toUpperCase() + day_url.slice(1) + " is not today.. It is " + days[day] + "!";
+        }
+        // Set Document to el
+        document.getElementById("answer").innerHTML = el;
+    }
+
+    // Set Copyright
+    document.getElementById("copyright").innerHTML = "&copy; IsToday " + today.getFullYear();
+
+</script>
+</html>

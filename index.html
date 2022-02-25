@@ -50,7 +50,12 @@
     var day_url = url_array[url_array.length - 1];
 
     // Is today day_url?
-    if (day_url === "" || day_url === "index.html") {
+    if (day_url === "" || day_url === "index.html" || day_url.includes("Https://isto.day/")) {
+        if(day_url.includes("Https://isto.day/")){
+            // Redirect to #tuesday from Https://isto.day/#tuesday
+            day_url = url_array[url_array.length - 2];
+            window.location.replace("#" + day_url);
+        }
         // If no day_url, set to today
         el = "Today is " + days[day] + "!";
         document.getElementById("question").innerHTML = el;

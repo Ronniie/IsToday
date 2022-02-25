@@ -50,7 +50,7 @@
     var day_url = url_array[url_array.length - 1];
 
     // Is today day_url?
-    if (day_url === "") {
+    if (day_url === "" || day_url === "index.html") {
         // If no day_url, set to today
         el = "Today is " + days[day] + "!";
         document.getElementById("question").innerHTML = el;

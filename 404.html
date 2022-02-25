@@ -10,6 +10,14 @@
     var url_array = url.split("#");
     // Get last element
     var day_url = url_array[url_array.length - 1];
+    // If empty
+    if (day_url === "") {
+        // Get Day
+        var day = new Date().getDay();
+        // Redirect to isto.day/day
+        day_url = "day";
+    }
     window.location.replace("https://isto.day/#" + day_url);
+
 </script>
 </html>

@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+<head>
+    <title>IsToday</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IsToday">
+    <meta name="twitter:description" content="Welcome to IsToday, is today {{ day }}?">
+    <meta name="twitter:image" content="{% static 'istoday/images/IsToday.svg' %}">
+    <!-- Site -->
+    <meta property="og:title" content="IsTo.day" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://isto.day/" />
+    <meta property="og:image" content="{% static 'istoday/images/IsToday.svg' %}" />
+    <meta property="og:description" content="Welcome to IsToday, is today {{ day }}?" />
+    <meta property="og:site_name" content="IsToday" />
+    <!-- Color -->
+    <meta name="theme-color" content="#42e3ff">
+    <meta name="msapplication-navbutton-color" content="#42e3ff">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'istoday/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'istoday/css/bootstrap.min.css' %}">
+</head>
+
+<body>
+<!-- Bootstrap Layout -->
+<div class="istoday">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="{% static 'istoday/images/IsToday.svg' %}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal" id="question">{{ question }}?</h1>
+        <p class="lead" id="answer">{{ answer }}</p>
+    </div>
+    <p class="mt-5 mb-3 text-muted text-center" id="copyright"></p>
+</div>
+</body>
+<script>
+    // Set Copyright
+    document.getElementById("copyright").innerHTML = "&copy; IsToday " + new Date().getFullYear();
+</script>
+</html>
